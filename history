@@ -1,0 +1,11 @@
++from keras.models import Sequential
++from keras.layers import Dense, Dropout
++import fn
++import imp
++imp.reload(fn)
++from fn import ftn, generate_dataset, v_generate_dataset
++model = Sequential()
++model.add(Dense(10, input_dim=21, activation='sigmoid'))
++model.add(Dense(21, activation='sigmoid'))
++model.compile(loss='mse', optimizer='sgd', metrics=['mean_squared_error'])
++model.fit_generator(generate_dataset(), 10000, 100, verbose=1, validation_data=generate_dataset(), nb_val_samples=1000)

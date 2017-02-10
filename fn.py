@@ -13,13 +13,19 @@ def ftn(inp):
     return val
     # return (val+19)/rang
 
+binary = lambda x: np.matrix([int(d) for d in format(x, '021b')])
+
 def generate_dataset():
     binary = lambda x: np.matrix([int(d) for d in format(x, '021b')])
     while(True):
         inp = random.randint(0, 1000000)
         out = ftn(inp)
+        # if inp>500000:
+            # out = 1
+        # else:
+            # out = 0
         yield (binary(inp), binary(out))
-        # yield (np.array((inp,)), np.array((inp,)))
+        # yield (np.array((inp/1000000,)), np.array((out,)))
 
 def v_generate_dataset():
     X = [random.random() for i in range(100000)]
